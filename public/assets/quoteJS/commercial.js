@@ -11,7 +11,6 @@ class Commercial extends Quote {
 
   updateURL = () => {
     this.URL = `/api/quote/com/${this.numShafts}/${this.shaftDollarCostToMultiply}/${this.percentValue}`;
-    console.log(this.URL);
   };
 
   inputEventListeners = () => {
@@ -33,27 +32,19 @@ class Commercial extends Quote {
               this.percentValue = 10;
               this.updateURL();
               this.getQuoteData();
-              console.log(this.quoteData);
               break;
 
             case 12345:
               this.percentValue = 13;
               this.updateURL();
               this.getQuoteData();
-              console.log(this.quoteData);
-
               break;
 
             case 15400:
               this.percentValue = 16;
               this.updateURL();
               this.getQuoteData();
-              console.log(this.quoteData);
-
               break;
-
-            default:
-              console.log('all good in the hood');
           }
         });
       });
@@ -68,7 +59,6 @@ class Commercial extends Quote {
         })
         .then((quote) => {
           Object.assign(this.quoteData, quote);
-          console.log(this.quoteData);
           this.showQuote();
         });
     }
