@@ -6,6 +6,7 @@ class Commercial extends Quote {
     this.quoteData = {};
     this.inputEventListeners();
     this.radioButtonEventListener();
+    this.clearErrorMessage();
   }
 
   updateURL = () => {
@@ -66,25 +67,37 @@ class Commercial extends Quote {
     this.$estimateContainer.innerHTML = '';
     this.$estimateContainer.innerHTML = `
         ${this.heading}
-        <ul>
-        <li> Elevators needed: ${this.numShafts} </li>
-        <li> Install fee: ${installFee.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        })} </li>
+        <table class="table"> <tbody> 
+        <tr> 
+        <th scope="row">Elevators needed:</th> <td>${this.numShafts}</td> </tr>
 
-        <li> Subtotal: ${subTotal.toLocaleString('en-US', {
+        <tr>
+        <th scope="row"> Install fee: </th>
+         <td>${installFee.toLocaleString('en-US', {
+           style: 'currency',
+           currency: 'USD',
+         })} 
+        </td> 
+        </tr>
+
+        <tr> <th scope="row"> Subtotal: </th>
+        <td> ${subTotal.toLocaleString('en-US', {
           style: 'currency',
           currency: 'USD',
         })} 
-        </li>
+        </td> 
+        </tr>
 
-        <li> Total: ${total.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        })} 
-        </li>
-        </ul>
+        <tr> <th scope="row"> Total: </th>
+        <td>
+         ${total.toLocaleString('en-US', {
+           style: 'currency',
+           currency: 'USD',
+         })} 
+        </td>
+        </tr>
+        </tbody>
+        </table
         <br />
         ${this.contactButton}`;
   };

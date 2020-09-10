@@ -9,6 +9,7 @@ class CorporateHybrid extends Quote {
     this.quoteData = {};
     this.inputEventListeners();
     this.radioButtonEventListener();
+    this.clearErrorMessage();
   }
 
   updateURL = () => {
@@ -83,24 +84,43 @@ class CorporateHybrid extends Quote {
     this.$estimateContainer.innerHTML = '';
     this.$estimateContainer.innerHTML = `
         ${this.heading}
-        <ul>
-        <li> Elevators needed: ${totalShafts} </li>
-        <li> Columns needed: ${totalColumns} </li>
-        <li> Install fee: ${installFee.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        })} </li>
-        <li> Subtotal: ${subTotal.toLocaleString('en-US', {
+        <table class="table"> <tbody> 
+        <tr> 
+        <th scope="row">Elevators needed:</th> <td>${totalShafts}</td> </tr>
+        
+        <tr> 
+        <th scope="row">Columns needed: </th>
+        <td>${totalColumns} 
+        </td> 
+        </tr>
+
+        <tr>
+        <th scope="row"> Install fee: </th>
+         <td>${installFee.toLocaleString('en-US', {
+           style: 'currency',
+           currency: 'USD',
+         })} 
+        </td> 
+        </tr>
+
+        <tr> <th scope="row"> Subtotal: </th>
+        <td> ${subTotal.toLocaleString('en-US', {
           style: 'currency',
           currency: 'USD',
         })} 
-        </li>
-        <li> Total: ${total.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        })} 
-        </li>
-        </ul>
+        </td> 
+        </tr>
+
+        <tr> <th scope="row"> Total: </th>
+        <td>
+         ${total.toLocaleString('en-US', {
+           style: 'currency',
+           currency: 'USD',
+         })} 
+        </td>
+        </tr>
+        </tbody>
+        </table
         <br />
         ${this.contactButton}`;
   };

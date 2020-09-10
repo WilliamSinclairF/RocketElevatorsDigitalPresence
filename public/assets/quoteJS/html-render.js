@@ -3,78 +3,79 @@ class RenderHTML extends Quote {
     super();
     this.$selectionContainer = document.querySelector('#selectioncontainer');
     this.$formContainer = document.querySelector('#formcontainer');
-    this.renderBasedOnDropdown();
+
+    this.mainHeading = `<h4 class="mt-20 text-blue">Tell Us About Your Project</h4>`;
+    this.selectionHeading = `<h4 class="mt-20 text-blue">Select Your Solution</h4>`;
+    this.placeHolderQuote = `<h4 class="mt-20 text-blue">Our quote...</h4>`;
 
     this.radioButtonsHtml = `
-   <div id="pricetable" class="order 98 m-30 ml-10 w-100p">
-       <h4>Select Your Solution</h4> 
-       <br />
-    <div class="ml-auto mr-auto">
+       ${this.selectionHeading}
+    <p id="errorcontainer" class="text-red col-xs-6"></p>
     <form>
-      <label for="standard"> Standard - $7565 per elevator
-      <input name="productline" type="radio" id="standard" value="7565" />
+      <label for="standard" class="fw-300"> Standard - $7565 per elevator
+      <input name="productline" type="radio" id="standard" value="7565"/>
       </label> 
-      <small class="form-text text-muted">Our time-tested elevators. </small>
+      <small class="form-text text-muted bold">Our time-tested elevators. </small>
+      <small class="form-text text-muted text-gray">10% installation fee.</small>
       <br />
-      <label for="premium"> Premium - $12,345 per elevator
+      <label for="premium" class="fw-300"> Premium - $12,345 per elevator
       <input name="productline" type="radio" id="premium" value="12345" />
       </label> 
-      <small class="form-text text-muted">Our luxury line of elevators. </small>
+      <small class="form-text text-muted bold">Our luxury line of elevators. </small>
+      <small class="form-text text-muted text-gray">13% installation fee.</small>
 
       <br />
-      <label for="excelium">Excelium - $15,400 per elevator
+      <label for="excelium" class="fw-300">Excelium - $15,400 per elevator
       <input name="productline" type="radio" id="excelium" value="15400" />
       </label> 
-      <small class="form-text text-muted">Our exclusive line of elevators, made to order. </small>
+      <small class="form-text text-muted bold">Our exclusive line of elevators, made to order by our <br /> in-house Elevator Artist with premium materials.</small>
+      <small class="form-text text-muted text-gray">16% installation fee.</small>
       <br />
-      </form>
-      </div>
-    </div>`;
+      </form>`;
 
     this.floorInputHtml = `
       <div> 
-        <label for="numfloors"> Number Of Floors (including basements) <strong>*</strong> </label>
+        <label for="numfloors" class="fw-300"> Number Of Floors (including basements) <strong>*</strong> </label>
         <input name="numfloors" type="number" id="numfloors" class="numberinput" min="0" /> <br />
       </div>`;
     this.basementInputHtml = `
       <div>
-        <label for="numbasements">Number Of Basements <strong>*</strong> </label>
+        <label for="numbasements" class="fw-300">Number Of Basements <strong>*</strong> </label>
         <input name="numbasements" type="number" id="numbasements"  class="numberinput" min="0" />
       </div>`;
+    this.renderBasedOnDropdown();
   }
 
-  // conditional rendering}
+  // conditional rendering
 
   renderResidentialForm = () => {
     this.$formContainer.innerHTML = '';
-    this.$formContainer.innerHTML = `<div id="residentialform" class="m-30 mr-10 w-100p">
-  <h4>Tell Us About Your Project</h4>
+    this.$formContainer.innerHTML = `
+  ${this.mainHeading}
   <br />
-  <div class="ml-auto mr-auto">
   <form>
-      <div>
-        <label for="numapartments">Number Of Apartments <strong>*</strong> </label>
+      <div> 
+        <label for="numapartments" class="fw-300">Number Of Apartments <strong>*</strong> </label>
         <input name="numapartments" type="number" id="numapartments" class="numberinput" min="0" />
         <br />
       </div>
       ${this.floorInputHtml}
       ${this.basementInputHtml}
       </form>
-    </div>
-    </div>
-
-${this.radioButtonsHtml} `;
+    `;
+    this.$pricetable.innerHTML = '';
+    this.$pricetable.innerHTML = `${this.radioButtonsHtml}`;
+    this.$estimateContainer.innerHTML = this.placeHolderQuote;
   };
 
   renderCommercialForm = () => {
     this.$formContainer.innerHTML = '';
-    this.$formContainer.innerHTML = `<div id="commercialform" class="m-30 w-100p">
-    <h4>Tell Us About Your Project</h4>
+    this.$formContainer.innerHTML = `
+    ${this.mainHeading}
     <br />
-    <div class="ml-auto mr-auto">
     <form>
       <div>
-        <label for="numdistinctbusinesses">Number Of Distinct Businesses</label>
+        <label for="numdistinctbusinesses" class="fw-300">Number Of Distinct Businesses</label>
         <input
           name="numdistinctbusinesses"
           type="number"
@@ -87,73 +88,78 @@ ${this.radioButtonsHtml} `;
      ${this.floorInputHtml}
      ${this.basementInputHtml}
       <div>
-        <label for="numparkingspaces">Number Of Parking Spaces</label>
+        <label for="numparkingspaces" class="fw-300">Number Of Parking Spaces</label>
         <input name="numparkingspaces" type="number" id="numparkingspaces" class="numberinput" min="0"/>
       </div>
       <div>
-        <label for="numshafts">Required Elevator Quantity  <strong>*</strong></label>
+        <label for="numshafts" class="fw-300">Required Elevator Quantity  <strong>*</strong></label>
         <input name="numshafts" type="number" id="numshafts" class="numberinput" min="0" />
       </div>
     </div>
     </form>
   </div>
-    <br />
-${this.radioButtonsHtml}`;
+    <br />`;
+    this.$pricetable.innerHTML = '';
+    this.$pricetable.innerHTML = `${this.radioButtonsHtml}`;
+    this.$estimateContainer.innerHTML = this.placeHolderQuote;
   };
 
   renderCorpForm = () => {
     this.$formContainer.innerHTML = '';
-    this.$formContainer.innerHTML = `<div id="corporateform" class="m-30 w-100p">
-    <h4>Tell Us About Your Project</h4>
+    this.$formContainer.innerHTML = `
+    ${this.mainHeading}
     <br />
-    <div class="ml-auto mr-auto">
     <form>
       <div>
-        <label for="numtenantcompanies">Number Of Tenant Companies</label>
+        <label for="numtenantcompanies" class="fw-300">Number Of Tenant Companies</label>
         <input name="numtenantcompanies" type="number" id="numtenantcompanies" class="numberinput" min="0" /> <br />
       </div>
       ${this.floorInputHtml}
       ${this.basementInputHtml}
 
       <div>
-        <label for="numparkingspaces">Number Of Parking Spaces</label>
+        <label for="numparkingspaces" class="fw-300">Number Of Parking Spaces</label>
         <input name="numparkingspaces" type="number" id="numparkingspaces"  class="numberinput" min="0" />
       </div>
-      <div> <label for="maxoccupantsperfloor">Maximum Number Of Occupants Per Floor  <strong>*</strong> </label>
+      <div> <label for="maxoccupantsperfloor" class="fw-300">Maximum Number Of Occupants Per Floor  <strong>*</strong> </label>
         <input name="maxoccupantsperfloor" type="number" id="maxoccupantsperfloor" class="numberinput" min="0" /> 
      </div>
     </div>
     </form>
-  </div> <br />
-${this.radioButtonsHtml}`;
+  </div> <br />`;
+    this.$pricetable.innerHTML = '';
+    this.$pricetable.innerHTML = `${this.radioButtonsHtml}`;
+    this.$estimateContainer.innerHTML = this.placeHolderQuote;
   };
 
   renderHybridForm = () => {
     this.$formContainer.innerHTML = '';
-    this.$formContainer.innerHTML = `<div id="corporateform" class="m-30 w-100p">
-    <h4>Tell Us About Your Project</h4>
+    this.$formContainer.innerHTML = `
+    ${this.mainHeading}
     <br />
-    <div class="ml-auto mr-auto">
     <form>
-      <div> <label for="numtenantcompanies">Number Of Tenant Companies</label>
+      <div> <label for="numtenantcompanies" class="fw-300">Number Of Tenant Companies </label>
         <input name="numtenantcompanies" type="number" id="numtenantcompanies" class="numberinput" min="0" /> <br />
       </div>
       ${this.floorInputHtml}
       ${this.basementInputHtml}
       <div>
-        <label for="numparkingspaces">Number Of Parking Spaces</label>
+        <label for="numparkingspaces" class="fw-300">Number Of Parking Spaces</label>
         <input name="numparkingspaces" type="number" id="numparkingspaces"  class="numberinput" min="0"/>
       </div>
-      <div> <label for="maxoccupantsperfloor">Maximum Number Of Occupants Per Floor <strong>*</strong> </label>
+      <div> 
+      <label for="maxoccupantsperfloor" class="fw-300">Maximum Number Of Occupants Per Floor <strong>*</strong> </label>
       <input name="maxoccupantsperfloor" type="number" id="maxoccupantsperfloor" class="numberinput" min="0"/>
       </div>
-       <div> <label for="hoursofoperation"> Hours of Operation </label>
+       <div> 
+       <label for="hoursofoperation" class="fw-300"> Hours of Operation </label>
         <input name="hoursofoperation" type="number" id="hoursofoperation" class="numberinput" max="24" min="0" />
       </div>
-    </div>
     </form>
-  </div> <br />
-  ${this.radioButtonsHtml}`;
+    <br />`;
+    this.$pricetable.innerHTML = '';
+    this.$pricetable.innerHTML = `${this.radioButtonsHtml}`;
+    this.$estimateContainer.innerHTML = this.placeHolderQuote;
   };
 
   // set event listeners on dropdown

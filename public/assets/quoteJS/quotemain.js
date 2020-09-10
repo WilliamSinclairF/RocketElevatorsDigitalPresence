@@ -1,7 +1,7 @@
 class Quote {
   constructor() {
     //selectors - number inputs
-    this.$pricetable = document.querySelector('#pricetable');
+    this.$pricetable = document.querySelector('#rbcontainer');
     this.$estimateContainer = document.querySelector('#estimatecontainer');
     this.$errorcontainer = document.querySelector('#errorcontainer');
     //selectors - radio buttons
@@ -11,8 +11,8 @@ class Quote {
 
     // dynamic html
     this.errorMessage = `Please fill all required fields before selecting a product line.`;
-    this.contactButton = `<a href="#contactres"><h3 class="btn btn-primary btn-lg">Contact us for more information</h3></a>`;
-    this.heading = `<h3>Based on the information you provided, here is our cost estimate:</h3>`;
+    this.contactButton = `<a href="#contactres"><h3 class="btn btn-primary btn-lg">Contact Sales</h3></a>`;
+    this.heading = `<h4 class="mt-20 text-blue">Our Quote</h4>`;
 
     this.URL = ``;
 
@@ -25,8 +25,6 @@ class Quote {
     this.doorsPerFloorAvg = 0;
     this.totalShafts = 0;
     this.shaftDollarCostToMultiply = 0;
-
-    this.clearEstimate();
   }
 
   getQuoteData() {
@@ -64,7 +62,6 @@ class Quote {
     );
   };
   clearEstimate = () => {
-    this.$estimateContainer.classList = '';
     this.$estimateContainer.innerHTML = '';
   };
 
