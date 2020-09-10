@@ -4,7 +4,6 @@ class Residential extends Quote {
     this.quoteData = {};
     this.inputEventListeners();
     this.radioButtonEventListener();
-    this.URL = ``;
   }
 
   updateURL = () => {
@@ -62,28 +61,12 @@ class Residential extends Quote {
       });
   };
 
-  getQuoteData() {
-    if (this.validateInputs()) {
-      this.quotePromise = fetch(this.URL);
-      this.quotePromise
-        .then((response) => {
-          return response.json();
-        })
-        .then((quote) => {
-          Object.assign(this.quoteData, quote);
-          this.showQuote();
-        });
-    }
-  }
-
   validateInputs = () => {
     if (this.numApartments && this.numFloors) {
       return true;
     } else {
       this.$errorcontainer.textContent = this.errorMessage;
-      document
-        .getElementsByName('productline')
-        .forEach((el) => (el.checked = false));
+      this.clearRadioButtons();
     }
   };
 

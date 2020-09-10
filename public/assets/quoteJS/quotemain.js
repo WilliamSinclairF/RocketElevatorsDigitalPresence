@@ -14,6 +14,8 @@ class Quote {
     this.contactButton = `<a href="#contactres"><h3 class="btn btn-primary btn-lg">Contact us for more information</h3></a>`;
     this.heading = `<h3>Based on the information you provided, here is our cost estimate:</h3>`;
 
+    this.URL = ``;
+
     this.numApartments = 0;
     this.numFloors = 0;
     this.numBasements = 0;
@@ -23,11 +25,22 @@ class Quote {
     this.doorsPerFloorAvg = 0;
     this.totalShafts = 0;
     this.shaftDollarCostToMultiply = 0;
-    this.SubTotal = 0;
-    this.installFee = 0;
-    this.grandTotal = 0;
 
     this.clearEstimate();
+  }
+
+  getQuoteData() {
+    if (this.validateInputs()) {
+      this.quotePromise = fetch(this.URL);
+      this.quotePromise
+        .then((response) => {
+          return response.json();
+        })
+        .then((quote) => {
+          Object.assign(this.quoteData, quote);
+          this.showQuote();
+        });
+    }
   }
 
   inputValidation = () => {
@@ -57,5 +70,11 @@ class Quote {
 
   clearErrorMessage = () => {
     this.$errorcontainer.textContent = ``;
+  };
+  clearRadioButtons = () => {
+    document
+      .getElementsByName('productline')
+      .forEach((el) => (el.checked = false));
+    return;
   };
 }

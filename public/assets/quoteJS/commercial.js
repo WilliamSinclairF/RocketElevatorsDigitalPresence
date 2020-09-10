@@ -6,7 +6,6 @@ class Commercial extends Quote {
     this.quoteData = {};
     this.inputEventListeners();
     this.radioButtonEventListener();
-    this.URL = ``;
   }
 
   updateURL = () => {
@@ -50,28 +49,12 @@ class Commercial extends Quote {
       });
   };
 
-  getQuoteData() {
-    if (this.validateInputs()) {
-      this.quotePromise = fetch(this.URL);
-      this.quotePromise
-        .then((response) => {
-          return response.json();
-        })
-        .then((quote) => {
-          Object.assign(this.quoteData, quote);
-          this.showQuote();
-        });
-    }
-  }
-
   validateInputs = () => {
     if (this.numShafts > 0) {
       return true;
     } else {
       this.$errorcontainer.textContent = this.errorMessage;
-      document
-        .getElementsByName('productline')
-        .forEach((el) => (el.checked = false));
+      this.clearRadioButtons();
     }
   };
 

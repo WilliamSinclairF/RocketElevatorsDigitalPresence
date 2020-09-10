@@ -9,7 +9,6 @@ class CorporateHybrid extends Quote {
     this.quoteData = {};
     this.inputEventListeners();
     this.radioButtonEventListener();
-    this.URL = ``;
   }
 
   updateURL = () => {
@@ -21,9 +20,7 @@ class CorporateHybrid extends Quote {
       return true;
     } else {
       this.$errorcontainer.textContent = this.errorMessage;
-      document
-        .getElementsByName('productline')
-        .forEach((el) => (el.checked = false));
+      this.clearRadioButtons();
     }
   };
 
@@ -71,20 +68,6 @@ class CorporateHybrid extends Quote {
         });
       });
   };
-
-  getQuoteData() {
-    if (this.validateInputs()) {
-      this.quotePromise = fetch(this.URL);
-      this.quotePromise
-        .then((response) => {
-          return response.json();
-        })
-        .then((quote) => {
-          Object.assign(this.quoteData, quote);
-          this.showQuote();
-        });
-    }
-  }
 
   showQuote = () => {
     this.clearErrorMessage();
