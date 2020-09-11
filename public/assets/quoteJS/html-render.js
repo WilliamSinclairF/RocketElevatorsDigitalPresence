@@ -6,7 +6,7 @@ class RenderHTML extends Quote {
 
     this.mainHeading = `<h4 class="mt-20 text-blue">Tell Us About Your Project</h4>`;
     this.selectionHeading = `<h4 class="mt-20 text-blue">Select Your Solution</h4>`;
-    this.placeHolderQuote = `<h4 class="mt-20 text-blue">Our quote...</h4>`;
+    this.placeHolderQuote = `<h4 class="mt-20 text-blue text-center">Your Quote...</h4>`;
 
     this.radioButtonsHtml = `
        ${this.selectionHeading}

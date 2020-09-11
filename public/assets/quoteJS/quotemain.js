@@ -4,6 +4,7 @@ class Quote {
     this.$pricetable = document.querySelector('#rbcontainer');
     this.$estimateContainer = document.querySelector('#estimatecontainer');
     this.$errorcontainer = document.querySelector('#errorcontainer');
+
     //selectors - radio buttons
     this.$standardRadioButton = document.querySelector('#standard');
     this.$premiumRadioButton = document.querySelector('#premium');
@@ -11,8 +12,8 @@ class Quote {
 
     // dynamic html
     this.errorMessage = `Please verify the information you provided and ensure all required fields are filled.`;
-    this.contactButton = `<a href="#contactres"><h3 class="btn btn-primary btn-lg">Contact Sales</h3></a>`;
-    this.heading = `<h4 class="mt-20 text-blue">Your Quote:</h4>`;
+    this.contactButton = `<a href="#contactres"><h3 class="btn btn-primary btn-lg">Contact Us</h3></a>`;
+    this.heading = `<h4 class="mt-20 text-blue text-center">Your Quote</h4>`;
 
     this.URL = ``;
 
