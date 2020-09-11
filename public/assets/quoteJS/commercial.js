@@ -7,6 +7,7 @@ class Commercial extends Quote {
     this.inputEventListeners();
     this.radioButtonEventListener();
     this.clearErrorMessage();
+    this.resetEstimateBoxStyle();
   }
 
   updateURL = () => {
@@ -54,20 +55,25 @@ class Commercial extends Quote {
     if (this.numShafts > 0) {
       return true;
     } else {
-      this.$errorcontainer.textContent = this.errorMessage;
+      this.$errorcontainer.innerHTML = this.errorMessage;
+      this.$errorcontainer.classList = 'alert alert-danger m-30 text-center';
       this.clearRadioButtons();
     }
   };
 
   showQuote = () => {
     this.clearErrorMessage();
-    const { installFee, subTotal, total } = this.quoteData;
+    const { installFee, subTotal, total, id } = this.quoteData;
 
-    this.$estimateContainer.classList += 'pt-20 container card box-shadow';
+    this.$estimateContainer.classList += ' box-shadow';
     this.$estimateContainer.innerHTML = '';
     this.$estimateContainer.innerHTML = `
         ${this.heading}
         <table class="table"> <tbody> 
+
+        <tr> 
+        <th scope="row">Quote ID:</th> <td>${id}</td> </tr>
+
         <tr> 
         <th scope="row">Elevators needed:</th> <td>${this.numShafts}</td> </tr>
 

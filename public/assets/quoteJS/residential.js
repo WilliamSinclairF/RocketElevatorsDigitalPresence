@@ -5,6 +5,7 @@ class Residential extends Quote {
     this.inputEventListeners();
     this.radioButtonEventListener();
     this.clearErrorMessage();
+    this.resetEstimateBoxStyle();
   }
 
   updateURL = () => {
@@ -63,10 +64,16 @@ class Residential extends Quote {
   };
 
   validateInputs = () => {
-    if (this.numApartments && this.numFloors) {
+    if (
+      this.numApartments &&
+      this.numFloors &&
+      this.numBasements &&
+      this.numFloors != this.numBasements
+    ) {
       return true;
     } else {
-      this.$errorcontainer.textContent = this.errorMessage;
+      this.$errorcontainer.innerHTML = this.errorMessage;
+      this.$errorcontainer.classList = 'alert alert-danger text-center';
       this.clearRadioButtons();
     }
   };
@@ -79,13 +86,20 @@ class Residential extends Quote {
       installFee,
       subTotal,
       total,
+      id,
     } = this.quoteData;
 
-    this.$estimateContainer.classList += 'pt-20 container card box-shadow';
+    console.log(this.quoteData);
+
+    this.$estimateContainer.classList += ' box-shadow';
     this.$estimateContainer.innerHTML = '';
     this.$estimateContainer.innerHTML = `
         ${this.heading}
         <table class="table"> <tbody> 
+        
+        <tr> 
+        <th scope="row">Quote ID:</th> <td>${id}</td> </tr>
+
         <tr> 
         <th scope="row">Elevators needed:</th> <td>${totalShafts}</td> </tr>
         

@@ -10,9 +10,9 @@ class Quote {
     this.$exceliumRadioButton = document.querySelector('#excelium');
 
     // dynamic html
-    this.errorMessage = `Please fill all required fields before selecting a product line.`;
+    this.errorMessage = `Please verify the information you provided and ensure all required fields are filled.`;
     this.contactButton = `<a href="#contactres"><h3 class="btn btn-primary btn-lg">Contact Sales</h3></a>`;
-    this.heading = `<h4 class="mt-20 text-blue">Our Quote</h4>`;
+    this.heading = `<h4 class="mt-20 text-blue">Your Quote:</h4>`;
 
     this.URL = ``;
 
@@ -66,7 +66,12 @@ class Quote {
   };
 
   clearErrorMessage = () => {
-    this.$errorcontainer.textContent = ``;
+    this.$errorcontainer.innerHTML = ``;
+    this.$errorcontainer.classList = '';
+  };
+
+  resetEstimateBoxStyle = () => {
+    this.$estimateContainer.classList = 'col-lg-4 col-md-4 col-sm-12';
   };
   clearRadioButtons = () => {
     document

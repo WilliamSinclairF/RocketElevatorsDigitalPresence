@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const express = require('express');
 const path = require('path');
+const uniqid = require('uniqid');
 
 const calcRes = require('./modules/residential/calc-res');
 const calcCom = require('./modules/commercial/calc-com');
@@ -28,7 +29,10 @@ app.get(
       percentValue: parseInt(req.params.percentValue),
     };
 
-    res.send(calcRes(quoteValues));
+    const result = calcRes(quoteValues);
+    const id = uniqid.time('REQ-');
+
+    res.send({ ...result, id });
   }
 );
 
@@ -49,7 +53,10 @@ app.get(
       percentValue: parseInt(req.params.percentValue),
     };
 
-    res.send(calcCom(quoteValues));
+    const result = calcCom(quoteValues);
+    const id = uniqid.time('REQ-');
+
+    res.send({ ...result, id });
   }
 );
 
@@ -71,7 +78,10 @@ app.get(
       percentValue: parseInt(req.params.percentValue),
     };
 
-    res.send(calcCorp(quoteValues));
+    const result = calcCorp(quoteValues);
+    const id = uniqid.time('REQ-');
+
+    res.send({ ...result, id });
   }
 );
 
