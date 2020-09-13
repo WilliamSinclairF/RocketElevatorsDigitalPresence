@@ -219,6 +219,7 @@ class Quote {
       return true;
     } else {
       this.resetQuoteValues();
+      this.radioButtonForm.reset();
       this.ErrorContainer.style.display = '';
       return false;
     }
@@ -229,6 +230,7 @@ class Quote {
       return true;
     } else {
       this.resetQuoteValues();
+      this.radioButtonForm.reset();
       this.ErrorContainer.style.display = '';
       return false;
     }
@@ -239,6 +241,7 @@ class Quote {
       return true;
     } else {
       this.resetQuoteValues();
+      this.radioButtonForm.reset();
       this.ErrorContainer.style.display = '';
       return false;
     }
