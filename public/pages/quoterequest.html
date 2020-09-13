@@ -2,14 +2,27 @@
 
 <html lang="en">
   <head>
-
-   <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
-   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-   <link rel="manifest" href="/site.webmanifest">
-   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-   <meta name="msapplication-TileColor" content="#da532c">
-   <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon-16x16.png"
+    />
+    <link rel="manifest" href="../site.webmanifest" />
+    <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <meta charset="utf-8" />
     <title>Rocket Elevators</title>
 
@@ -36,15 +49,20 @@
       type="text/css"
     />
 
+    <link href="../assets/css/style.css" rel="stylesheet" type="test/css" />
 
     <!-- THEME CSS -->
-    <link href="/assets/css/essentials.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/css/layout.css" rel="stylesheet" type="text/css" />
+    <link
+      href="../assets/css/essentials.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../assets/css/layout.css" rel="stylesheet" type="text/css" />
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <link href="/assets/css/header-1.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/header-1.css" rel="stylesheet" type="text/css" />
     <link
-      href="/assets/css/color_scheme/blue.css"
+      href="../assets/css/color_scheme/blue.css"
       rel="stylesheet"
       type="text/css"
       id="color_scheme"
@@ -67,7 +85,7 @@
             </button>
 
             <a class="logo float-left scrollTo" href="#top">
-              <img src="/assets/RE_assets/R2.png" alt="" />
+              <img src="../assets/RE_assets/R2.png" alt="" />
             </a>
             <div
               class="navbar-collapse collapse float-right nav-main-collapse submenu-light"
@@ -76,37 +94,42 @@
                 <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
                   <li class="active">
                     <!-- HOME -->
-                    <a href="/index.html"> HOME </a>
+                    <a href="../index.html"> HOME </a>
                   </li>
                   <!-- SERVICES -->
                   <li class="dropdown">
-										<a class="dropdown-toggle" href="#services">
-											SERVICES
-										</a>
-										<ul class="dropdown-menu">
-											<li class="dropdown">
-												<a class="dropdown-toggle" href="/pages/residential.html">
-													RESIDENTIAL
-												</a>
-											</li>
-											<li class="dropdown">
-												<a class="dropdown-toggle" href="/pages/commercial.html">
-													CORPORATE & COMMERCIAL
-												</a>
+                    <a class="dropdown-toggle" href="#services"> SERVICES </a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown">
+                        <a
+                          class="dropdown-toggle"
+                          href="../pages/residential.html"
+                        >
+                          RESIDENTIAL
+                        </a>
                       </li>
+                      <li class="dropdown">
+                        <a
+                          class="dropdown-toggle"
+                          href="../pages/commercial.html"
+                        >
+                          CORPORATE & COMMERCIAL
+                        </a>
                       </li>
-                      </ul>
+                    </ul>
+                  </li>
+
                   <li>
                     <!-- WORK -->
-                    <a href="/index.html#portfolio"> PORTFOLIO </a>
+                    <a href="../index.html#portfolio"> PORTFOLIO </a>
                   </li>
                   <li>
                     <!-- NEWS -->
-                    <a href="/index.html#news"> NEWS </a>
+                    <a href="../index.html#news"> NEWS </a>
                   </li>
                   <li>
                     <!-- CLIENTS -->
-                    <a href="/index.html#clients"> CLIENTS </a>
+                    <a href="../index.html#clients"> CLIENTS </a>
                   </li>
                   <li>
                     <!-- CONTACT -->
@@ -118,55 +141,106 @@
           </div>
         </header>
       </div>
-      
-<section>
-    
+
+      <section>
         <div class="container text-center pb-30">
-          
           <div clas="fw-300"><h1>Ready to elevate your project?</h1></div>
 
           <h3 clas="fw-300">Get started now with a quote</h3>
           <div id="selectioncontainer" class="col-12">
             <select class="h-50">
               <option>---SELECT PROJECT TYPE---</option>
-              <option value="residential">Residential</option>
-              <option value="commercial">Commercial</option>
-              <option value="corporate">Corporate</option>
-              <option value="hybrid">Hybrid</option>
+              <option value="Residential">Residential</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Hybrid">Hybrid</option>
             </select>
-	          
-            </div>
-
           </div>
+        </div>
 
-          <div class="container">
-            <div id="errorcontainer" class="">
-
-            </div>
-          </div>
-
-
-          <div class="container">
-          <div class="row justify-content-center">
+        <div class="container">
           <div
-            id="formcontainer"
-            class="col-lg-4 col-md-4 col-sm-12 text-center"
+            id="errorcontainer"
+            class="alert alert-danger m-30 text-center"
+            style="display: none"
+          >
+            Ooops! Please verify the information you provided before selecting a
+            price option.
+          </div>
+        </div>
+
+        <div class="container" id="mastercontainer">
+          <div class="row justify-content-center">
+            <div
+              id="formcontainer"
+              class="col-lg-4 col-md-4 col-sm-12 text-center"
             >
+              <h4
+                id="numberinputheading"
+                class="mt-20 text-blue text-center"
+              ></h4>
+              <form id="numberinputform"></form>
+            </div>
+
+            <div
+              id="radiobuttoncontainer"
+              class="col-lg-4 col-md-4 col-sm-12 text-center"
+            >
+              <h4
+                id="radiobuttonheading"
+                class="mt-20 text-blue text-center"
+              ></h4>
+              <form id="radiobuttoninputform"></form>
+            </div>
+
+            <div
+              id="estimatecontainer"
+              class="col-lg-4 col-md-4 col-sm-12 text-center"
+            >
+              <h4
+                id="quoteheading"
+                class="mt-20 text-blue text-center"
+                style="display: none"
+              >
+                Your Quote
+              </h4>
+              <table class="table">
+                <tbody id="quotetable" style="display: none">
+                  <tr>
+                    <th scope="row">Quote ID:</th>
+                    <td id="quote-id">...</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Elevators needed:</th>
+                    <td id="quote-elevators">...</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Columns needed:</th>
+                    <td id="quote-columns">...</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Install fee:</th>
+                    <td id="quote-installfee">...</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Subtotal:</th>
+                    <td id="quote-subtotal">...</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Total:</th>
+                    <td id="quote-total">...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-
-        <div id="rbcontainer" class="col-lg-4 col-md-4 col-sm-12 text-center">
-
-        </div>
-
-        <div id="estimatecontainer" class="col-lg-4 col-md-4 col-sm-12 text-center"> 
-  
-        </div>
-
-      </div>
-      </div>
-          
-
-</section>
+      </section>
       <!-- CONTACT -->
       <section id="contactres">
         <div class="container">
@@ -477,22 +551,21 @@
     <!-- /PRELOADER -->
 
     <!-- JAVASCRIPT FILES -->
-
     <script>
-      var plugin_path = '/assets/plugins/';
+      var plugin_path = '../assets/plugins/';
     </script>
-    <script src="/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
 
-    <script src="/assets/js/scripts.js"></script>
+    <script src="../assets/plugins/jquery/jquery-3.3.1.min.js"></script>
 
+    <script src="../assets/js/scripts.js"></script>
 
     <!-- PAGELEVEL SCRIPTS -->
-    <script src="/assets/js/contact.js"></script>
+    <script src="../assets/js/contact.js"></script>
 
-    <script src="/assets/quoteJS/quotemain.js"></script>
-    <script src="/assets/quoteJS/html-render.js"></script>
-    <script src="/assets/quoteJS/residential.js"></script>
-    <script src="/assets/quoteJS/commercial.js"></script>
-    <script src="/assets/quoteJS/corphybrid.js"></script>
+    <script src="../assets/quoteJS/quotemain.js"></script>
+    <script src="../assets/quoteJS/html-render.js"></script>
+    <script src="../assets/quoteJS/residential.js"></script>
+    <script src="../assets/quoteJS/commercial.js"></script>
+    <script src="../assets/quoteJS/corphybrid.js"></script>
   </body>
 </html>

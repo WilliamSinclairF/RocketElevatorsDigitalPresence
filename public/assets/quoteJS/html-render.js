@@ -1,194 +1,287 @@
 class RenderHTML extends Quote {
   constructor() {
     super();
+
+    this.NumberInputHeading = document.getElementById('numberinputheading');
+    this.RadioButtonHeading = document.getElementById('radiobuttonheading');
+    this.ErrorContainer = document.getElementById('errorcontainer');
+
+    this.numberInputForm = document.getElementById('numberinputform');
+    this.radioButtonForm = document.getElementById('radiobuttoninputform');
+    this.quoteTable = document.getElementById('quotetable');
+
+    this.$quoteIdTD = document.getElementById('quote-id');
+    this.$quoteElevatorsTD = document.getElementById('quote-elevators');
+    this.$quoteColumnsTD = document.getElementById('quote-columns');
+    this.$quoteInstallfeeTD = document.getElementById('quote-installfee');
+    this.$quoteSubtotalTD = document.getElementById('quote-subtotal');
+    this.$quoteTotalTD = document.getElementById('quote-total');
+
+    this.RadioButtonMap = [
+      {
+        Label: 'Standard - $7565 Per Elevator',
+        inputType: 'radio',
+        id: 'standard',
+        class: 'fw-300',
+        small1text: 'Our time-tested elevators.',
+        small2text: '10% installation fee.',
+        small1class: 'form-text text-muted bold',
+        small2class: 'form-text text-muted text-gray',
+        name: 'productline',
+      },
+      {
+        Label: 'Premium - $12345 Per Elevator',
+        inputType: 'radio',
+        id: 'premium',
+        class: 'fw-300',
+        small1text: 'Our luxury line of elevators.',
+        small2text: '13% installation fee.',
+        small1class: 'form-text text-muted bold',
+        small2class: 'form-text text-muted text-gray',
+        name: 'productline',
+      },
+      {
+        Label: 'Excelium - $15400 Per Elevator',
+        inputType: 'radio',
+        id: 'excelium',
+        class: 'fw-300',
+        small1text:
+          'Our exclusive line of elevators, made to order by our in-house Elevator Artist with premium materials.',
+        small2text: '16% installation fee.',
+        small1class: 'form-text text-muted bold',
+        small2class: 'form-text text-muted text-gray',
+        name: 'productline',
+      },
+    ];
+
+    this.elementMap = [
+      {
+        Label: 'Number Of Apartments:',
+        inputType: 'number',
+        id: 'numApartments',
+        min: 0,
+        res: true,
+      },
+
+      {
+        Label: 'Number Of Floors:',
+        inputType: 'number',
+        id: 'numFloors',
+        min: 0,
+        corp: true,
+        com: true,
+        hybrid: true,
+      },
+
+      {
+        Label: 'Number Of Floors (Including Basements):',
+        inputType: 'number',
+        id: 'numFloors',
+        min: 0,
+        res: true,
+      },
+
+      {
+        Label: 'Number Of Basements:',
+        inputType: 'number',
+        id: 'numBasements',
+        min: 0,
+        res: true,
+        corp: true,
+        com: true,
+        hybrid: true,
+      },
+
+      {
+        Label: 'Number Of Distinct Businesses:',
+        inputType: 'number',
+        id: 'numBusinesses',
+        min: 0,
+        com: true,
+        hybrid: true,
+      },
+
+      {
+        Label: 'Number Of Available Parking Spaces:',
+        inputType: 'number',
+        id: 'numParking',
+        min: 0,
+        com: true,
+        corp: true,
+        hybrid: true,
+      },
+
+      {
+        Label: 'Number Of Required Elevators:',
+        inputType: 'number',
+        id: 'numElevators',
+        min: 0,
+        max: 24,
+        com: true,
+      },
+
+      {
+        Label: 'Number Of Tenant Companies:',
+        inputType: 'number',
+        id: 'numCompanies',
+        min: 0,
+        corp: true,
+      },
+
+      {
+        Label: 'Maximum Number Of Occupants Per Floor:',
+        inputType: 'number',
+        id: 'numOccupants',
+        min: 0,
+        corp: true,
+        hybrid: true,
+      },
+
+      {
+        Label: 'Hours Of Activity',
+        inputType: 'number',
+        id: 'numHours',
+        min: 0,
+        max: 24,
+        hybrid: true,
+      },
+    ];
+
     this.$selectionContainer = document.querySelector('#selectioncontainer');
-    this.$formContainer = document.querySelector('#formcontainer');
 
-    this.mainHeading = `<h4 class="mt-20 text-blue">Tell Us About Your Project</h4>`;
-    this.selectionHeading = `<h4 class="mt-20 text-blue">Select Your Solution</h4>`;
-    this.placeHolderQuote = `<h4 class="mt-20 text-blue text-center">Your Quote...</h4>`;
+    this.MasterContainer = document.getElementById('mastercontainer');
+    this.numberInputForm = document.getElementById('numberinputform');
+    this.radioButtonForm = document.getElementById('radiobuttoninputform');
+    this.quoteTable = document.getElementById('quotetable');
 
-    this.radioButtonsHtml = `
-       ${this.selectionHeading}
-    <p id="errorcontainer" class="text-red col-xs-6"></p>
-    <form>
-      <label for="standard" class="fw-300"> Standard - $7565 per elevator
-      <input name="productline" type="radio" id="standard" value="7565"/>
-      </label> 
-      <small class="form-text text-muted bold">Our time-tested elevators. </small>
-      <small class="form-text text-muted text-gray">10% installation fee.</small>
-      <br />
-      <label for="premium" class="fw-300"> Premium - $12,345 per elevator
-      <input name="productline" type="radio" id="premium" value="12345" />
-      </label> 
-      <small class="form-text text-muted bold">Our luxury line of elevators. </small>
-      <small class="form-text text-muted text-gray">13% installation fee.</small>
-
-      <br />
-      <label for="excelium" class="fw-300">Excelium - $15,400 per elevator
-      <input name="productline" type="radio" id="excelium" value="15400" />
-      </label> 
-      <small class="form-text text-muted bold">Our exclusive line of elevators, made to order by our <br /> in-house Elevator Artist with premium materials.</small>
-      <small class="form-text text-muted text-gray">16% installation fee.</small>
-      <br />
-      </form>`;
-
-    this.floorInputHtml = `
-      <div> 
-        <label for="numfloors" class="fw-300"> Number Of Floors (including basements) <strong>*</strong> </label>
-        <input name="numfloors" type="number" id="numfloors" class="numberinput" min="0" /> <br />
-      </div>`;
-    this.basementInputHtml = `
-      <div>
-        <label for="numbasements" class="fw-300">Number Of Basements <strong>*</strong> </label>
-        <input name="numbasements" type="number" id="numbasements"  class="numberinput" min="0" />
-      </div>`;
     this.renderBasedOnDropdown();
   }
 
-  // conditional rendering
+  appendInputsToDOM = (objectArray, form) => {
+    objectArray.forEach((el) => {
+      let div = document.createElement('div');
+      let label = document.createElement('label');
+      let input = document.createElement('input');
+      let small1 = document.createElement('small');
+      let small2 = document.createElement('small');
+      let br = document.createElement('br');
 
-  renderResidentialForm = () => {
-    this.$formContainer.innerHTML = '';
-    this.$formContainer.innerHTML = `
-  ${this.mainHeading}
-  <br />
-  <form>
-      <div> 
-        <label for="numapartments" class="fw-300">Number Of Apartments <strong>*</strong> </label>
-        <input name="numapartments" type="number" id="numapartments" class="numberinput" min="0" />
-        <br />
-      </div>
-      ${this.floorInputHtml}
-      ${this.basementInputHtml}
-      </form>
-    `;
-    this.$pricetable.innerHTML = '';
-    this.$pricetable.innerHTML = `${this.radioButtonsHtml}`;
-    this.$estimateContainer.innerHTML = this.placeHolderQuote;
+      form.appendChild(div);
+      label.textContent = el.Label;
+      label.className = 'fw-300';
+      input.type = el.inputType;
+      input.id = el.id;
+      input.min = el.min;
+      small1.textContent = el.small1text;
+      small2.textContent = el.small2text;
+      small1.className = el.small1class;
+      small2.className = el.small2class;
+
+      if (el.name) {
+        input.name = 'productline';
+      }
+
+      if (el.small1text && el.small2text) {
+        div.append(label, input, br, small1, br, small2, br);
+      } else {
+        div.append(label, input, br);
+      }
+      div.parentNode.insertBefore(br, div.nextSibling);
+    });
+    this.NumberInputHeading.textContent = `Tell Us About Your ${this.selectedForm} Project`;
+    this.RadioButtonHeading.textContent = 'Select Your Solution';
+    this.QuoteContainer.style.display = '';
+    this.QuoteHeading.style.display = '';
   };
 
-  renderCommercialForm = () => {
-    this.$formContainer.innerHTML = '';
-    this.$formContainer.innerHTML = `
-    ${this.mainHeading}
-    <br />
-    <form>
-      <div>
-        <label for="numdistinctbusinesses" class="fw-300">Number Of Distinct Businesses</label>
-        <input
-          name="numdistinctbusinesses"
-          type="number"
-          id="numdistinctbusinesses"
-           class="numberinput" 
-           min="0"
-        />
-        <br />
-      </div>
-     ${this.floorInputHtml}
-     ${this.basementInputHtml}
-      <div>
-        <label for="numparkingspaces" class="fw-300">Number Of Parking Spaces</label>
-        <input name="numparkingspaces" type="number" id="numparkingspaces" class="numberinput" min="0"/>
-      </div>
-      <div>
-        <label for="numshafts" class="fw-300">Required Elevator Quantity  <strong>*</strong></label>
-        <input name="numshafts" type="number" id="numshafts" class="numberinput" min="0" />
-      </div>
-    </div>
-    </form>
-  </div>
-    <br />`;
-    this.$pricetable.innerHTML = '';
-    this.$pricetable.innerHTML = `${this.radioButtonsHtml}`;
-    this.$estimateContainer.innerHTML = this.placeHolderQuote;
+  newQuoteForm = (value) => {
+    this.resetQuoteRender();
+    this.selectedForm = value;
+    this.removeFromContainer(this.numberInputForm);
+    this.removeFromContainer(this.radioButtonForm);
+
+    this.appendInputsToDOM(
+      this.filterElements(),
+      this.numberInputForm,
+      this.NumberInputHeading,
+      this.ProjectHeading
+    );
+
+    this.appendInputsToDOM(
+      this.RadioButtonMap,
+      this.radioButtonForm,
+      this.RadioButtonHeading,
+      'Select Your Solution'
+    );
   };
 
-  renderCorpForm = () => {
-    this.$formContainer.innerHTML = '';
-    this.$formContainer.innerHTML = `
-    ${this.mainHeading}
-    <br />
-    <form>
-      <div>
-        <label for="numtenantcompanies" class="fw-300">Number Of Tenant Companies</label>
-        <input name="numtenantcompanies" type="number" id="numtenantcompanies" class="numberinput" min="0" /> <br />
-      </div>
-      ${this.floorInputHtml}
-      ${this.basementInputHtml}
+  renderQuoteTable = () => {
+    const {
+      totalShafts,
+      totalColumns,
+      installFee,
+      subTotal,
+      total,
+      id,
+    } = this.quoteData;
 
-      <div>
-        <label for="numparkingspaces" class="fw-300">Number Of Parking Spaces</label>
-        <input name="numparkingspaces" type="number" id="numparkingspaces"  class="numberinput" min="0" />
-      </div>
-      <div> <label for="maxoccupantsperfloor" class="fw-300">Maximum Number Of Occupants Per Floor  <strong>*</strong> </label>
-        <input name="maxoccupantsperfloor" type="number" id="maxoccupantsperfloor" class="numberinput" min="0" /> 
-     </div>
-    </div>
-    </form>
-  </div> <br />`;
-    this.$pricetable.innerHTML = '';
-    this.$pricetable.innerHTML = `${this.radioButtonsHtml}`;
-    this.$estimateContainer.innerHTML = this.placeHolderQuote;
+    this.$quoteIdTD.textContent = id;
+    this.$quoteElevatorsTD.textContent = totalShafts;
+    if (this.selectedForm != 'Commercial') {
+      this.$quoteColumnsTD.textContent = totalColumns;
+    } else {
+      this.$quoteColumnsTD.textContent = 'N/A';
+    }
+    this.$quoteInstallfeeTD.textContent = this.formatCurrency(installFee);
+    this.$quoteSubtotalTD.textContent = this.formatCurrency(subTotal);
+    this.$quoteTotalTD.textContent = this.formatCurrency(total);
   };
 
-  renderHybridForm = () => {
-    this.$formContainer.innerHTML = '';
-    this.$formContainer.innerHTML = `
-    ${this.mainHeading}
-    <br />
-    <form>
-      <div> <label for="numtenantcompanies" class="fw-300">Number Of Tenant Companies </label>
-        <input name="numtenantcompanies" type="number" id="numtenantcompanies" class="numberinput" min="0" /> <br />
-      </div>
-      ${this.floorInputHtml}
-      ${this.basementInputHtml}
-      <div>
-        <label for="numparkingspaces" class="fw-300">Number Of Parking Spaces</label>
-        <input name="numparkingspaces" type="number" id="numparkingspaces"  class="numberinput" min="0"/>
-      </div>
-      <div> 
-      <label for="maxoccupantsperfloor" class="fw-300">Maximum Number Of Occupants Per Floor <strong>*</strong> </label>
-      <input name="maxoccupantsperfloor" type="number" id="maxoccupantsperfloor" class="numberinput" min="0"/>
-      </div>
-       <div> 
-       <label for="hoursofoperation" class="fw-300"> Hours of Operation </label>
-        <input name="hoursofoperation" type="number" id="hoursofoperation" class="numberinput" max="24" min="0" />
-      </div>
-    </form>
-    <br />`;
-    this.$pricetable.innerHTML = '';
-    this.$pricetable.innerHTML = `${this.radioButtonsHtml}`;
-    this.$estimateContainer.innerHTML = this.placeHolderQuote;
+  resetQuoteRender = () => {
+    this.$quoteIdTD.textContent = '...';
+    this.$quoteColumnsTD.textContent = '...';
+    this.$quoteElevatorsTD.textContent = '...';
+    this.$quoteInstallfeeTD.textContent = '...';
+    this.$quoteSubtotalTD.textContent = '...';
+    this.$quoteTotalTD.textContent = '...';
   };
-
-  // set event listeners on dropdown
 
   renderBasedOnDropdown = () => {
     this.$selectionContainer.addEventListener('change', (e) => {
+      let selectedFormValue = e.target.value;
       switch (e.target.value) {
-        case 'residential':
-          this.renderResidentialForm();
-          new Residential();
+        case 'Residential':
+          this.newQuoteForm(selectedFormValue);
+          this.resetQuoteValues;
+          this.areInputsValid = false;
+          this.ErrorContainer.style.display = 'none';
           break;
 
-        case 'commercial':
-          this.renderCommercialForm();
-          new Commercial();
+        case 'Commercial':
+          this.newQuoteForm(selectedFormValue);
+          this.resetQuoteValues;
+          this.areInputsValid = false;
+          this.ErrorContainer.style.display = 'none';
           break;
 
-        case 'corporate':
-          this.renderCorpForm();
-          new CorporateHybrid();
+        case 'Corporate':
+          this.selectedForm = 'Corporate';
+          this.newQuoteForm(selectedFormValue);
+          this.resetQuoteValues;
+          this.areInputsValid = false;
+          this.ErrorContainer.style.display = 'none';
           break;
 
-        case 'hybrid':
-          this.renderHybridForm();
-          new CorporateHybrid();
+        case 'Hybrid':
+          this.selectedForm = 'Hybrid';
+          this.newQuoteForm(selectedFormValue);
+          this.resetQuoteValues;
+          this.areInputsValid = false;
+          this.ErrorContainer.style.display = 'none';
           break;
       }
     });
   };
 }
 
-new RenderHTML();
+const Render = new RenderHTML();
