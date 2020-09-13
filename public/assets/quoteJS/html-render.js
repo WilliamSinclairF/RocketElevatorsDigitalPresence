@@ -252,14 +252,14 @@ class RenderHTML extends Quote {
       switch (e.target.value) {
         case 'Residential':
           this.newQuoteForm(selectedFormValue);
-          this.resetQuoteValues;
+          this.resetQuoteValues();
           this.areInputsValid = false;
           this.ErrorContainer.style.display = 'none';
           break;
 
         case 'Commercial':
           this.newQuoteForm(selectedFormValue);
-          this.resetQuoteValues;
+          this.resetQuoteValues();
           this.areInputsValid = false;
           this.ErrorContainer.style.display = 'none';
           break;
@@ -267,7 +267,7 @@ class RenderHTML extends Quote {
         case 'Corporate':
           this.selectedForm = 'Corporate';
           this.newQuoteForm(selectedFormValue);
-          this.resetQuoteValues;
+          this.resetQuoteValues();
           this.areInputsValid = false;
           this.ErrorContainer.style.display = 'none';
           break;
@@ -275,7 +275,7 @@ class RenderHTML extends Quote {
         case 'Hybrid':
           this.selectedForm = 'Hybrid';
           this.newQuoteForm(selectedFormValue);
-          this.resetQuoteValues;
+          this.resetQuoteValues();
           this.areInputsValid = false;
           this.ErrorContainer.style.display = 'none';
           break;

@@ -218,6 +218,7 @@ class Quote {
     ) {
       return true;
     } else {
+      this.resetQuoteValues();
       this.ErrorContainer.style.display = '';
       return false;
     }
@@ -227,6 +228,7 @@ class Quote {
     if (this.numElevators > 0) {
       return true;
     } else {
+      this.resetQuoteValues();
       this.ErrorContainer.style.display = '';
       return false;
     }
@@ -236,6 +238,7 @@ class Quote {
     if (this.maxOccupantsPerFloor && this.numFloors) {
       return true;
     } else {
+      this.resetQuoteValues();
       this.ErrorContainer.style.display = '';
       return false;
     }
